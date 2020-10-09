@@ -136,6 +136,11 @@
 
 
 # ##### 리스트 ######
+# # 만들기
+# asdf = []
+# asdf = list()
+
+
 # llist = [ "가", "나나나", "다라"]
 # print(llist.index("나나나")) # 1  위치찾기
 
@@ -151,8 +156,12 @@
 
 # print(llist.count("나나나")) #나나나 원소 가 몇번 있는지
 
+# # 원소들이 숫자일때 리스트 안 숫자 모두 더하기
+# listt = [1,2,3,4,5]
+# count = sum(listt)
 
-
+# # 원소가 존재하는지 확인하기
+# print(1 in listt)  #True
 
 # # 정렬
 # llist.sort()
@@ -175,6 +184,9 @@
 
 
 # ####   사전   ####
+# #만들기
+# ddic = dict()
+# ddic = {}
 
 # ddict = { 1 : "aaa" , 200 : "bbb"}
 
@@ -204,6 +216,10 @@
 
 # ### 튜플 ###
 # # 원소 추가 불가. 삭제 불가. 속도 빠름
+
+# # 만들기
+# asdf = tuple()
+# asdf = ()
 
 # tutu =("aaa", "bbb")
 # print (tutu[0])
@@ -373,3 +389,173 @@
 # scores = { "수학 " : 0 , "영어" : 10, "코딩" : 9123234230}
 # for sub, score in scores.items() :   # 쌍으로 튜플로 반환함
 #     print(sub.ljust(8), str(score).rjust(4), sep = ":")    # 왼쪽의 8공간을 확보하고 왼쪽정렬함
+
+
+
+
+
+
+
+
+
+# for i in range(999, 1005):
+#     print(str(i).zfill(3)) # 3자리를 차지하도록 숫자를 출력하고 빈곳은 0 으로 채움 / 4자리 수가 입력되면 그냥 4자리 출력함.
+
+
+
+# ### 표준입출력 ### ( 기호의 순서를 바꿀 수 없다.)
+# print("{0: >10}".format(123456789)) # 빈칸은 공백으로 채우기 / 10자리 확보 /오른쪽 정렬
+# print("{0: >+10}".format(123456789))  # + 부호도 표시 ( 기호도 한칸 차지함 )
+# print("{0: >+10}".format(-123456789)) 
+
+# print("{0:_>+10}".format(12346567)) # 빈칸을 _ 로 채우기
+# print("{0:,}".format(1234567)) # 3자리마다 콤마 찍기
+# print("{0:+,}".format(1234567)) # 3자리마다 콤마 찍기 / 부호 표시하기
+# print("{0:^>+30,}".format(1234567)) # 빈칸은 ^로 채우기, 오른쪽 정렬 / 부호표시하기 / 30자리 확보/ 콤마 3자리마다 표시
+# print("{0:f}".format(5/3))  # 소수점 출력 (7자리에서 반올림. 기본값임) 1.666667
+# print("{0:.2f}".format(5/3))  # 3자리에서 반올림 1.67
+# print(5/3) # 그냥 하면 15자리정도까지 나오는듯 1.6666666666666667
+
+
+
+### 파일 입출력 ###
+
+# score_file = open("score.txt", "w", encoding = "utf8") # w : 이걸 또 실행하면 파일을 덮어 쓴다.
+
+# print("수학 : 0", file = score_file)
+# # print("영어 : 20", file = score_file)
+# # print("영어 : 20", file = score_file)
+# score_file.close()
+
+
+
+# score_file = open("score2.txt", "a", encoding = "utf8") # a : 실행하면 파일을 끝 줄부터 이어서 쓴다. 파일이 없으면 파일을 만들고 쓴다.
+# score_file.write("hihihihiihi ")
+# score_file.write("hihihihiihi ")
+# score_file.write("\nhihihihiihi ") # print로 파일쓰기와의 차이점 : 이 방식으로 쓰면 출력이 끝나고 줄을 바꾸지 않는다.
+
+# score_file.close()
+
+
+# score_file = open("score2.txt", "r", encoding = "utf8") # r : 읽겠다.
+
+# # print(score_file.read()) # 파일의 모든 내용을 불러 출력한다.
+# print(score_file.readline()) # 파일의 한줄을 읽고 파일안에서 다음줄로 커서가 이동된다. 또 실행하면 그 커서위치부터 또 읽어옴.
+# # print(score_file.readline(), end ="") 
+# print(score_file.readline()) 
+# print(score_file.readline()) 
+# print(score_file.readline()) 
+# print(score_file.readline()) 
+# print(score_file.readline())   # 자료가 없으면 빈칸을 출력함. self
+# score_file.close()
+
+
+
+
+# # 파일의 내용이 몇줄인지 모를때
+# score_file = open("score2.txt", "r", encoding="utf8")
+# while True :
+#     line = score_file.readline()
+#     if not line :
+#         break
+#     print(line)
+
+# score_file.close()
+
+
+
+# score_file = open("score2.txt", "r", encoding="utf8")
+# lines = score_file.readlines() # 파일을 모두 읽어와서 list형태로 반환
+# for line in lines:
+#     print(line, end =" ")
+# score_file.close()
+
+
+
+### pickle ####
+## profile.pickle이라는 파일은 txt 처럼 열람이 안되네? self
+
+
+# import pickle
+# profile_file  = open("profile.pickle", "wb")  # b : 바이너리 타입 , 피클을 쓰기 위해서는 언제나 b를 지정해줘야한다., 피클에서는 인코딩설정할 필요가 없다.
+# profile = { "이름" : "윤윤윤", "나이" : 23, "취미" : ["축구", "야구", "농구"]}
+# print(profile)
+# pickle.dump(profile, profile_file) # 프로필정보를 프로필파일에 저장
+# profile_file.close()
+
+
+
+# import pickle
+# profile_file  = open("profile.pickle", "rb")   # 읽어오기
+# profile = pickle.load(profile_file) # 파일에서 정보 읽어오기
+# print("a", profile)
+# profile_file.close()
+
+
+###### with ####
+# import pickle
+# with open("profile.pickle", "rb") as profile_file : # 피클을 사용해서 파일을 받음
+#     print(pickle.load(profile_file))
+# #close 할 필요가 없음.
+# #pickle을 이용한 with 활용
+
+
+# with open("study2.txt", "w", encoding="utf8") as study_file:
+#     study_file.write("반갑다 짜식") # 파일이 없으면 파일을 만들고 쓴다.(파일이 있으면 모든내용을 지우고 덮어씀)
+# with open("study2.txt", "r", encoding="utf8") as study_file:
+#     print("\n", study_file.read())
+
+
+###### class ######
+
+class Unit :
+    def __init__ (self, name, hp):    # 생성자
+        self.name = name # 멤버변수 (클래스 내에서 선언된 변수)
+        self.hp = hp
+        #  print("[{}]인스턴스가 생성되었다.".format(self.name))
+
+
+# instance1 = Unit("윤윤", 110) # self 이외의 인자를 입력해야 생성된다.
+# instance2 = Unit("김김", 1120)
+# instance2.newvalue = True # instance2 에 newvalue 라는 새 변수를 만들 수 있다.(python)
+
+
+
+
+class AttackUnit(Unit) :   # 상속
+    def __init__ (self, name, hp, damage):    # 생성자
+        Unit.__init__(self, name, hp) #  부모 클래스에서 받아올 것들
+        self.damage = damage
+    
+    def attack(self, location): # 메소드
+        print("{0} : {1} 방향으로 적군을 공격한다. [ 공격력 {2}]" \
+            .format(self.name, location, self.damage)) #메소드 호출시 입력받을 변수는 self없이 표기
+
+    def damaged(self, damage):
+        print("{0} : {1} 데미지를 입었다.".format(self.name, damage))
+        self.hp -= damage
+        print("{0} : 현재 체력은 {1} 입니다.".format(self.name, self.hp))
+        if self.hp <=0 :
+            print("{0} : 파괴됨".format(self.name))
+
+
+firebat = AttackUnit("파이어뱃", 50,22)
+
+firebat.attack("10시")
+firebat.damaged(25)
+firebat.damaged(25)
+
+
+
+# 30 분가량 문자로 스타크래프트 구현...class 연습
+
+
+##### 예외 처리  ######
+
+
+
+# 내장함수 구글검색  list of python builtins
+# 외장함수 구글검색  list of python modules
+
+
+
